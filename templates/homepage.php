@@ -10,12 +10,12 @@ foreach ($posts as $post) {
     <div class="news">
         <h3>
             <?= htmlspecialchars($post['title']); ?>
-            <em>le <?= $post['french_creation_date']; ?></em>
+            <em>le <?= $post['creation_date']; ?></em>
         </h3>
         <p>
             <?= nl2br(htmlspecialchars($post['content'])); ?>
             <br />
-            <em><a href="post.php?id=<?= urlencode($post['identifier']) ?>">Commentaires</a></em>
+            <em><a href="post.php?id=<?= urlencode($post['id']) ?>">Commentaires</a></em>
         </p>
     </div>
 <?php
