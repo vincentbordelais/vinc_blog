@@ -1,7 +1,7 @@
-<?php $title = "Le blog de l'AVBN"; ?>
+<?php $title = "Le blog de Vinc"; ?>
 
 <?php ob_start(); ?>
-<h1>Le super blog de l'AVBN !</h1>
+<h1>Le super blog de Vinc !</h1>
 <p>Derniers billets du blog :</p>
 
 <?php
