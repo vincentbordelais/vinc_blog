@@ -2,13 +2,17 @@
 
 require_once('src/model/post.php');
 require_once('src/model/comment.php');
+require_once('src/lib/database.php');
 
 function post(string $identifier)
 {
-    $repository = new PostRepository;
-    $repository->getPost($identifier);
+    $postRepository = new PostRepository;
+    $postRepository->connection = new DatabaseConnection();
+    $post = $postRepository->getPost($identifier);
     // $post = getPost($identifier);
-    $comments = getComments($identifier);
+    $commentRepository = new CommentRepository();
+    $commentRepository->connection = new DatabaseConnection();;
+    $comments = $commentRepository->getComments($identifier);
 
     require('templates/post.php');
 }
