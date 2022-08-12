@@ -1,7 +1,7 @@
-<?php $title = "Le blog de Vinc"; ?>
+<?php $title = "Le blog de l'AVBN"; ?>
 
 <?php ob_start(); ?>
-<h1>Le super blog de Vinc !</h1>
+<h1>Le super blog de l'AVBN !</h1>
 <p>Derniers billets du blog :</p>
 
 <?php
@@ -10,12 +10,12 @@ foreach ($posts as $post) {
     <div class="news">
         <h3>
             <?= htmlspecialchars($post['title']); ?>
-            <em>le <?= $post['creation_date']; ?></em>
+            <em>le <?= $post['french_creation_date']; ?></em>
         </h3>
         <p>
             <?= nl2br(htmlspecialchars($post['content'])); ?>
             <br />
-            <em><a href="post.php?id=<?= urlencode($post['id']) ?>">Commentaires</a></em>
+            <em><a href="index.php?action=post&id=<?= urlencode($post['id']) ?>">Commentaires</a></em>
         </p>
     </div>
 <?php

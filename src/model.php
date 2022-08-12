@@ -4,13 +4,13 @@ function getPosts()
 {
     $database = dbConnect();
     $statement = $database->query(
-        "SELECT id, title, content, DATE_FORMAT(creation_date, '%d/%m/%Y à %Hh%imin%ss') AS creation_date FROM posts ORDER BY creation_date DESC LIMIT 0, 5"
+        "SELECT id, title, content, DATE_FORMAT(creation_date, '%d/%m/%Y à %Hh%imin%ss') AS french_creation_date FROM posts ORDER BY creation_date DESC LIMIT 0, 5"
     );
     $posts = [];
     while (($row = $statement->fetch())) {
         $post = [
             'title' => $row['title'],
-            'creation_date' => $row['creation_date'],
+            'french_creation_date' => $row['french_creation_date'],
             'content' => $row['content'],
             'id' => $row['id'],
         ];
@@ -25,14 +25,14 @@ function getPost($id)
 {
     $database = dbConnect();
     $statement = $database->prepare(
-        "SELECT id, title, content, DATE_FORMAT(creation_date, '%d/%m/%Y à %Hh%imin%ss') AS creation_date FROM posts WHERE id = ?"
+        "SELECT id, title, content, DATE_FORMAT(creation_date, '%d/%m/%Y à %Hh%imin%ss') AS french_creation_date FROM posts WHERE id = ?"
     );
     $statement->execute([$id]);
 
     $row = $statement->fetch();
     $post = [
         'title' => $row['title'],
-        'creation_date' => $row['creation_date'],
+        'french_creation_date' => $row['french_creation_date'],
         'content' => $row['content'],
     ];
 
@@ -51,7 +51,7 @@ function getComments($id)
     while (($row = $statement->fetch())) {
         $comment = [
             'author' => $row['author'],
-            'creation_date' => $row['creation_date'],
+            'french_creation_date' => $row['french_creation_date'],
             'comment' => $row['comment'],
         ];
 
