@@ -3,10 +3,10 @@
 require_once('src/model/post.php');
 require_once('src/model/comment.php');
 
-function post(string $id)
+function post(string $identifier)
 {
-    $post = getPost($id);
-    $comments = getComments($id);
+    $post = getPost($identifier);
+    $comments = getComments($identifier);
 
     require('templates/post.php');
 }
