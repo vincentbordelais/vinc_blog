@@ -1,9 +1,9 @@
 <?php
 // ROUTEUR
 
-require_once('src/controllers/homepage.php');
-require_once('src/controllers/post.php');
-require_once('src/controllers/add_comment.php');
+require_once('src/Controllers/HomePageController.php');
+require_once('src/Controllers/PostController.php');
+require_once('src/Controllers/AddCommentController.php');
 
 try {
     if (isset($_GET['action']) && $_GET['action'] !== '') {

@@ -1,7 +1,10 @@
 <?php
 
-require_once('src/model/post.php');
-require_once('src/lib/database.php');
+require_once('src/Model/Post.php');
+require_once('src/Lib/Database.php');
+
+use Application\Model\Post\PostRepository;
+use Application\Lib\Database\DatabaseConnection;
 
 function homepage()
 {
