@@ -1,9 +1,13 @@
 <?php
 // ROUTEUR
 
-require_once('src/Controllers/HomePageController.php');
+require_once('src/Controllers/HomepageController.php');
 require_once('src/Controllers/PostController.php');
-require_once('src/Controllers/AddCommentController.php');
+require_once('src/Controllers/Comment/AddCommentController.php');
+
+use Application\Controllers\Comment\Add\AddCommentController;
+use Application\Controllers\HomePage\HomepageController;
+use Application\Controllers\Post\PostController;
 
 try {
     if (isset($_GET['action']) && $_GET['action'] !== '') {
@@ -11,15 +15,15 @@ try {
             if (isset($_GET['id']) && $_GET['id'] > 0) {
                 $identifier = $_GET['id'];
 
-                post($identifier);
+                (new PostController())->execute($identifier);
             } else {
                 throw new Exception('Aucun identifiant de post envoyé');
             }
-        } elseif ($_GET['action'] === 'addComment') {
+        } elseif ($_GET['action'] === 'add_comment') {
             if (isset($_GET['id']) && $_GET['id'] > 0) {
                 $identifier = $_GET['id'];
 
-                addComment($identifier, $_POST);
+                (new AddCommentController())->execute($identifier, $_POST);
             } else {
                 throw new Exception('Aucun identifiant de post envoyé');
             }
@@ -27,9 +31,9 @@ try {
             throw new Exception('La page souhaitée n\'existe pas.');
         }
     } else {
-        homepage();
+        (new HomepageController())->execute();
     }
 } catch (Exception $e) {
     $errorMessage = $e->getMessage();
-    require('templates/error.php');
+    require('Templates/error.php');
 }

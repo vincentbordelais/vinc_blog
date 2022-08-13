@@ -1,17 +1,22 @@
 <?php
 
-require_once('src/Model/Post.php');
-require_once('src/Lib/Database.php');
+namespace Application\Controllers\HomePage;
+
+require_once('src/Model/post.php');
+require_once('src/Lib/database.php');
 
 use Application\Model\Post\PostRepository;
 use Application\Lib\Database\DatabaseConnection;
 
-function homepage()
+class HomePageController
 {
-    $postRepository = new PostRepository;
-    $postRepository->connection = new DatabaseConnection();
-    $posts = $postRepository->getPosts();
-    // $posts = getPosts();
+    function execute()
+    {
+        $postRepository = new PostRepository;
+        $postRepository->connection = new DatabaseConnection();
+        $posts = $postRepository->getPosts();
+        // $posts = getPosts();
 
-    require('templates/homepage.php');
+        require('Templates/homepage.php');
+    }
 }
