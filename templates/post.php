@@ -1,4 +1,4 @@
-<?php $title = "Le blog de Vinc"; ?>
+<?php $title = "Le blog de vinc"; ?>
 
 <?php ob_start(); ?>
 <h1>Le super blog de Vinc !</h1>
@@ -33,7 +33,7 @@
 <?php
 foreach ($comments as $comment) {
 ?>
-    <p><strong><?= htmlspecialchars($comment->author) ?></strong> le <?= $comment->frenchCreationDate ?></p>
+    <p><strong><?= htmlspecialchars($comment->author) ?></strong> le <?= $comment->frenchCreationDate ?> <a href="index.php?action=updateComment&id=<?= $comment->identifier ?>">(modifier)</a></p>
     <p><?= nl2br(htmlspecialchars($comment->comment)) ?></p>
 <?php
 }
